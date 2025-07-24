@@ -224,6 +224,13 @@ def _create_pc_set_for_reviewers(biased_scores,pair_per_reviewer):
         
     return revs_set
 
+def create_pc_set_for_reviewers_custom(biased_scores,pair_per_reviewer):
+    revs_set = {}
+    for i in range(np.shape(biased_scores)[1]):
+        revs_set.update({i:_sample_pairs(biased_scores[:,i], n_pairs = pair_per_reviewer[i] )})
+        
+    return revs_set
+
 def _pc_without_reviewers(revs_set):
     ''' input: the set of pc for each reviewer
         output: pc without the reviewer info'''
